@@ -1,361 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Web Andre</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi huella digital | André Patzi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap">
+<style>
+:root{--fondo:#F3F6FB;--tinta:#0F1B36;--azul:#2748A5;--cielo:#6FA3FF;--acento:#FF6B1A;--suave:#DCE4F2;--sombra:0 14px 30px rgba(15,27,54,.18)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fondo);color:var(--tinta);font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.65;font-size:1.05rem}
+img,video{max-width:100%;display:block}
+p{max-width:68ch}
 
-    <style>
-        :root {
-            /* Material Design Color Palette */
-            --primary: #3f51b5; /* Indigo 500 */
-            --primary-dark: #303f9f; /* Indigo 700 */
-            --secondary: #ff4081; /* Pink A200 */
-            --secondary-dark: #c60055;
-            --background: #f5f5f6; /* Grey 50 */
-            --surface: #ffffff;
-            --error: #b00020;
-            --on-primary: #ffffff;
-            --on-secondary: #ffffff;
-            --on-background: #000000;
-            --on-surface: rgba(0, 0, 0, 0.87);
-            --text-secondary: rgba(0, 0, 0, 0.60);
-            --divider: rgba(0, 0, 0, 0.12);
-            
-            /* Elevations */
-            --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            --elevation-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            --elevation-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            --elevation-fab: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.20);
-        }
+.barra{position:sticky;top:0;z-index:5;background:rgba(15,27,54,.96);backdrop-filter:blur(6px)}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem 1.3rem;padding:.7rem 1rem}
+nav a{color:#fff;text-decoration:none;font-weight:600;padding:.2rem .1rem;border-bottom:3px solid transparent;transition:border-color .2s,color .2s}
+nav a:hover,nav a:focus-visible{border-color:var(--acento);color:var(--cielo);outline:none}
+.teclas{height:10px;background:repeating-linear-gradient(90deg,#fff 0 28px,var(--tinta) 28px 32px,#fff 32px 60px)}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+section{padding:4rem max(1.2rem,calc((100% - 880px)/2)) 3rem}
+h1{font-size:clamp(2.2rem,7vw,3.8rem);line-height:1.05;font-weight:800;margin:0 0 1.2rem}
+h2{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:800;margin:0 0 1.2rem;padding-bottom:.4rem;border-bottom:5px solid var(--acento);display:inline-block}
+h3{font-size:1.3rem;margin:2rem 0 .8rem}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background);
-            color: var(--on-surface);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+/* Inicio */
+.inicio{display:grid;grid-template-columns:260px 1fr;gap:2.5rem;align-items:center;color:#fff;
+  background:radial-gradient(circle at 85% 10%,rgba(111,163,255,.35),transparent 45%),
+  linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/36px 36px,
+  linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/36px 36px,var(--tinta)}
+.perfil{width:260px;height:320px;object-fit:cover;object-position:50% 25%;border-radius:10px;border:6px solid #fff;box-shadow:12px 12px 0 var(--acento);transform:rotate(-2deg);transition:transform .3s}
+.perfil:hover{transform:rotate(0)}
+.frase{margin:0 0 1.2rem;padding:.9rem 1.1rem;border-left:5px solid var(--acento);background:rgba(255,255,255,.1);font-style:italic;border-radius:0 8px 8px 0}
+.frase strong{display:block;font-style:normal;color:var(--cielo);margin-bottom:.2rem}
+.inicio>*{animation:sube .8s both}
+.inicio>div{animation-delay:.2s}
+@keyframes sube{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
+/* Recuerdos */
+.fotos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.6rem;margin:2rem 0}
+figure{margin:0;background:#fff;padding:.7rem .7rem 1rem;border-radius:6px;box-shadow:var(--sombra);transition:transform .3s}
+figure:nth-child(odd){transform:rotate(-1.5deg)}
+figure:nth-child(even){transform:rotate(1.5deg)}
+figure:hover{transform:rotate(0) scale(1.03)}
+figure img{width:100%;height:270px;object-fit:cover;border-radius:3px}
+figcaption{font-size:.95rem;color:var(--azul);margin-top:.6rem;font-weight:600}
+.valor{background:var(--azul);color:#fff;padding:1rem 1.2rem;border-radius:10px}
 
-        .app-bar {
-            background-color: var(--primary);
-            color: var(--on-primary);
-            padding: 0 24px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            box-shadow: var(--elevation-1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            gap: 16px;
-        }
+/* Habilidades */
+#habilidades{background:var(--suave)}
+.lista{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}
+.lista li{background:#fff;padding:1.1rem;border-radius:10px;border-top:5px solid var(--acento);box-shadow:var(--sombra);transition:transform .2s}
+.lista li:hover{transform:translateY(-4px)}
+.lista strong{display:block;color:var(--azul);margin-bottom:.3rem}
+.piano{position:relative;display:flex;height:150px;max-width:520px;border-radius:0 0 10px 10px;overflow:hidden;box-shadow:var(--sombra)}
+.piano .b{flex:1;background:#fff;border:1px solid #98a4bd;border-top:0;cursor:pointer;transition:background .1s}
+.piano .b:active,.piano .b.on{background:var(--cielo)}
+.piano .n{position:absolute;top:0;width:7%;height:90px;background:var(--tinta);border:0;border-radius:0 0 5px 5px;cursor:pointer;z-index:2}
+.piano .n:active,.piano .n.on{background:var(--acento)}
+.piano button:focus-visible{outline:3px solid var(--acento);outline-offset:-3px}
+.nota{color:var(--azul);font-size:.95rem}
 
-        .app-bar h1 {
-            font-size: 1.25rem;
-            font-weight: 500;
-            letter-spacing: 0.0125em;
-            flex-grow: 1;
-        }
+/* Futuro */
+.carta{margin-top:2.2rem;padding:1.8rem;background:#FFFDF6;border-radius:4px;box-shadow:var(--sombra);transform:rotate(-.6deg);background-image:repeating-linear-gradient(transparent 0 31px,#e7e2d0 31px 32px)}
+.carta h3{margin-top:0}
 
-        .icon-button {
-            background: none;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* Despedida */
+#despedida{background:linear-gradient(160deg,var(--azul),var(--tinta));color:#fff}
+#despedida h2{color:#fff}
+.lema{font-size:clamp(1.6rem,5vw,2.6rem);font-weight:800;line-height:1.2;color:var(--cielo)}
+.final{font-size:1.4rem;font-weight:600;color:var(--acento)}
 
-        .icon-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+footer{padding:1.2rem;text-align:center;background:var(--tinta);color:#fff;font-size:.9rem}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-            width: 100%;
-            flex-grow: 1;
-        }
+@media (max-width:640px){
+  .inicio{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .frase{text-align:left}
+  .perfil{width:210px;height:265px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.inicio>*{animation:none}*{transition:none!important}}
 
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-layout {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-            color: var(--primary-dark);
-        }
-
-        .section-header h2 {
-            font-size: 1.125rem;
-            font-weight: 500;
-        }
-
-        .task-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .card {
-            background-color: var(--surface);
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: var(--elevation-1);
-            transition: box-shadow 0.3s ease, transform 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            box-shadow: var(--elevation-2);
-            transform: translateY(-2px);
-        }
-
-        .card-title {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .card-desc {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .card-actions {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid var(--divider);
-            display: flex;
-            justify-content: flex-end;
-            gap: 8px;
-        }
-
-        .btn-text {
-            background: transparent;
-            color: var(--primary);
-            border: none;
-            padding: 6px 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn-text:hover {
-            background-color: rgba(63, 81, 181, 0.08);
-        }
-
-        .fab {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 56px;
-            height: 56px;
-            background-color: var(--secondary);
-            color: var(--on-secondary);
-            border: none;
-            border-radius: 50%;
-            box-shadow: var(--elevation-fab);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
-            z-index: 1000;
-        }
-
-        .fab:hover {
-            background-color: var(--secondary-dark);
-            box-shadow: var(--elevation-3);
-            transform: scale(1.05);
-        }
-
-        .fab:active {
-            transform: scale(0.95);
-        }
-
-        /* Project specific tags */
-        .chip {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: #e0e0e0;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            color: var(--on-surface);
-            margin-top: 8px;
-            font-weight: 500;
-        }
-        .chip.work { background-color: #bbdefb; color: #0d47a1; }
-        .chip.home { background-color: #c8e6c9; color: #1b5e20; }
-
-    </style>
+.ini{width:260px;height:320px;border-radius:10px;border:6px solid #fff;box-shadow:12px 12px 0 var(--acento);background:var(--azul);color:#fff;font-size:6rem;font-weight:800;align-items:center;justify-content:center}
+@media (max-width:640px){.ini{width:210px;height:265px}}
+</style>
 </head>
 <body>
 
-    <header class="app-bar">
-        <button class="icon-button" aria-label="Menu">
-            <span class="material-symbols-outlined">menu</span>
-        </button>
-        <h1>Pagina Web Andre</h1>
-        <button class="icon-button" aria-label="Search">
-            <span class="material-symbols-outlined">search</span>
-        </button>
-        <button class="icon-button" aria-label="Account">
-            <span class="material-symbols-outlined">account_circle</span>
-        </button>
-    </header>
+<header class="barra">
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#recuerdos">Recuerdos</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#futuro">Futuro</a>
+    <a href="#despedida">Despedida</a>
+  </nav>
+  <div class="teclas" aria-hidden="true"></div>
+</header>
 
-    <main class="container">
-        <div class="grid-layout">
-            
-            <!-- Inbox Column -->
-            <section class="board-column">
-                <div class="section-header">
-                    <span class="material-symbols-outlined">inbox</span>
-                    <h2>Inbox</h2>
-                </div>
-                <div class="task-list">
-                    <div class="card">
-                        <div class="card-title">
-                            Process meeting notes
-                            <button class="icon-button" style="padding:0; color:var(--text-secondary)"><span class="material-symbols-outlined">more_vert</span></button>
-                        </div>
-                        <div class="card-desc">Review notes from morning sync and extract action items.</div>
-                        <div class="card-actions">
-                            <button class="btn-text">Clarify</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-title">
-                            Email from Sarah
-                            <button class="icon-button" style="padding:0; color:var(--text-secondary)"><span class="material-symbols-outlined">more_vert</span></button>
-                        </div>
-                        <div class="card-desc">Requires a response regarding the Q3 budget estimates.</div>
-                        <div class="card-actions">
-                            <button class="btn-text">Clarify</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+<main>
+  <section id="inicio" class="inicio">
+    <img src="perfil.jpeg" alt="Foto de André" class="perfil" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="ini" style="display:none" aria-hidden="true">A</div>
+    <div>
+      <h1>André Enrique Patzi Yujra</h1>
+      <blockquote class="frase">
+        <strong>3ra Ley de Newton</strong>
+        “La única manera de que los humanos descubran cómo llegar a alguna parte es dejando algo atrás.”
+      </blockquote>
+      <p>¡Hola! Tengo 17 años y vivo en El Alto, Bolivia. Estudio en la especialidad de Sistemas Informáticos de la Unidad Educativa “Jesús Obrero”, turno mañana. Me gusta tocar el piano, bailar y hacer turismo, y disfruto compartir buenos momentos con mis amigos.</p>
+      <p>Esta página es mi huella digital: un lugar para recordar lo que viví, compartir lo que aprendí y soñar lo que viene.</p>
+    </div>
+  </section>
 
-            <!-- Next Actions Column -->
-            <section class="board-column">
-                <div class="section-header">
-                    <span class="material-symbols-outlined">play_arrow</span>
-                    <h2>Next Actions</h2>
-                </div>
-                <div class="task-list">
-                    <div class="card">
-                        <div class="card-title">
-                            Call Plumber
-                            <button class="icon-button" style="padding:0; color:var(--text-secondary)"><span class="material-symbols-outlined">more_vert</span></button>
-                        </div>
-                        <div class="card-desc">Schedule maintenance for the kitchen sink.</div>
-                        <span class="chip home">@Phone</span>
-                        <div class="card-actions">
-                            <button class="btn-text">Done</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-title">
-                            Draft Project Proposal
-                            <button class="icon-button" style="padding:0; color:var(--text-secondary)"><span class="material-symbols-outlined">more_vert</span></button>
-                        </div>
-                        <div class="card-desc">Write the initial draft for the new client portal.</div>
-                        <span class="chip work">@Computer</span>
-                        <div class="card-actions">
-                            <button class="btn-text">Done</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <section id="recuerdos">
+    <h2>Mis recuerdos del colegio</h2>
+    <p>Lo que más me llevo no son solo las clases, sino las personas. Me quedo con los amigos que hice en el camino, con las risas por cualquier cosa, con todo lo que hacíamos juntos y con esas salidas a jugar que nos hacían olvidar el cansancio. También aprendí a acercarme más a mis profesores y a tenerles confianza, y eso hizo que aprender fuera más fácil y más humano.</p>
+    <div class="fotos">
+      <figure><img src="recuerdo1.jpeg" alt="Amigos almorzando en el aula" loading="lazy"><figcaption>Almuerzos en el aula, entre bromas y risas.</figcaption></figure>
+      <figure><img src="recuerdo2.jpeg" alt="Un amigo oliendo las flores en un evento" loading="lazy"><figcaption>Momentos que se quedan en la memoria.</figcaption></figure>
+    </div>
+    <p class="valor"><strong>Lo que más valoro de esta etapa:</strong> la amistad, la confianza y los momentos compartidos.</p>
+  </section>
 
-            <!-- Projects Column -->
-            <section class="board-column">
-                <div class="section-header">
-                    <span class="material-symbols-outlined">folder</span>
-                    <h2>Projects</h2>
-                </div>
-                <div class="task-list">
-                    <div class="card">
-                        <div class="card-title">
-                            Website Redesign
-                            <button class="icon-button" style="padding:0; color:var(--text-secondary)"><span class="material-symbols-outlined">more_vert</span></button>
-                        </div>
-                        <div class="card-desc">Overhaul the corporate website with new branding.</div>
-                        <div style="margin-top: 12px; height: 4px; background: #e0e0e0; border-radius: 2px;">
-                            <div style="height: 100%; width: 45%; background: var(--primary); border-radius: 2px;"></div>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-text">Open</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-title">
-                            Summer Vacation
-                            <button class="icon-button" style="padding:0; color:var(--text-secondary)"><span class="material-symbols-outlined">more_vert</span></button>
-                        </div>
-                        <div class="card-desc">Plan itinerary and book flights for August.</div>
-                        <div style="margin-top: 12px; height: 4px; background: #e0e0e0; border-radius: 2px;">
-                            <div style="height: 100%; width: 10%; background: var(--primary); border-radius: 2px;"></div>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-text">Open</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <section id="habilidades">
+    <h2>Mis habilidades y talentos</h2>
+    <ul class="lista">
+      <li><strong>Artísticas:</strong> toco el piano y bailo. La música y el baile son mi forma de expresarme y disfrutar.</li>
+      <li><strong>Técnicas:</strong> se me da bien la computación y me defiendo en matemática y en sistemas.</li>
+      <li><strong>Lo que más me interesa:</strong> computación, sistemas y matemática.</li>
+    </ul>
+    <h3>Mi galería: toca mi piano</h3>
+    <div class="piano" role="group" aria-label="Piano para tocar">
+      <button class="b" data-f="261.63" aria-label="Do"></button>
+      <button class="b" data-f="293.66" aria-label="Re"></button>
+      <button class="b" data-f="329.63" aria-label="Mi"></button>
+      <button class="b" data-f="349.23" aria-label="Fa"></button>
+      <button class="b" data-f="392" aria-label="Sol"></button>
+      <button class="b" data-f="440" aria-label="La"></button>
+      <button class="b" data-f="493.88" aria-label="Si"></button>
+      <button class="b" data-f="523.25" aria-label="Do"></button>
+      <button class="n" data-f="277.18" style="left:calc(12.5% - 3.5%)" aria-label="Tecla negra"></button>
+      <button class="n" data-f="311.13" style="left:calc(25.0% - 3.5%)" aria-label="Tecla negra"></button>
+      <button class="n" data-f="369.99" style="left:calc(50.0% - 3.5%)" aria-label="Tecla negra"></button>
+      <button class="n" data-f="415.3" style="left:calc(62.5% - 3.5%)" aria-label="Tecla negra"></button>
+      <button class="n" data-f="466.16" style="left:calc(75.0% - 3.5%)" aria-label="Tecla negra"></button>
+    </div>
+    <p class="nota">Toca las teclas con el mouse o con el dedo: la música habla por mí.</p>
+  </section>
 
-        </div>
-    </main>
+  <section id="futuro">
+    <h2>Mi futuro</h2>
+    <p><strong>Mis metas:</strong> quiero estudiar Ingeniería Electrónica o Mecatrónica. Me gusta armar circuitos y aprender a programar, y sueño con crear cosas que combinen la tecnología con el mundo real.</p>
+    <p><strong>Dónde quiero estudiar:</strong> mi sueño es ingresar a la Universidad Mayor de San Andrés (UMSA).</p>
+    <p><strong>Lo que quiero aprender:</strong> electrónica, programación y todo lo que me ayude a convertir mis ideas en proyectos que funcionen.</p>
+    <article class="carta">
+      <h3>Carta a mi yo del futuro</h3>
+      <p>Querido yo del futuro:</p>
+      <p>Hoy termino una etapa y te escribo con la mochila llena de recuerdos. Espero que estés estudiando en la UMSA, armando circuitos y aprendiendo a programar. Ojalá no hayas dejado el piano ni el baile, y que sigas rodeado de buenos amigos.</p>
+      <p>Si algún día dudas, recuerda que para llegar lejos hay que dejar algo atrás, pero lo mejor siempre se lleva contigo.</p>
+      <p>Con cariño, André</p>
+    </article>
+  </section>
 
-    <button class="fab" aria-label="Add new task">
-        <span class="material-symbols-outlined">add</span>
-    </button>
+  <section id="despedida">
+    <h2>Mi promoción y despedida</h2>
+    <p class="lema">“Lo que dejamos atrás nos impulsa.”</p>
+    <p><strong>Para mis compañeros, docentes y familia:</strong> gracias a mis amigos por las risas y los buenos momentos, a mis profesores por enseñarme y confiar en mí, y a mi familia por acompañarme en cada paso. Esta etapa no habría sido igual sin ustedes.</p>
+    <p><strong>Lo que me llevo:</strong> amistades verdaderas, la confianza para acercarme a quienes me enseñan y la certeza de que cada paso, por pequeño que sea, me acerca a mis sueños.</p>
+    <p class="final">No es un adiós, es un hasta luego. ¡Nos vemos en el futuro!</p>
+  </section>
+</main>
 
+<footer>Mi huella digital · André Patzi · 2026</footer>
+<script>
+// Piano interactivo: cada tecla suena al tocarla
+var ctx;
+document.querySelectorAll('.piano button').forEach(function (t) {
+  function tocar() {
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'triangle';
+    o.frequency.value = parseFloat(t.dataset.f);
+    g.gain.setValueAtTime(0.35, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime + 1.2);
+    t.classList.add('on');
+    setTimeout(function () { t.classList.remove('on'); }, 150);
+  }
+  t.addEventListener('pointerdown', tocar);
+  t.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tocar(); } });
+});
+</script>
 </body>
 </html>
